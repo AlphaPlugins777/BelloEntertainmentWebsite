@@ -83,17 +83,45 @@
       ];
 
       var subject = "Event Inquiry — " + (get("eventType") || "New") + " — " + name;
-      var mailto =
-        "mailto:" + RECIPIENT +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(lines.join("\n"));
 
-      // Reveal confirmation, then open the user's email client
-      if (ok) {
-        ok.classList.add("show");
-        ok.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-      window.location.href = mailto;
+      // Send via Web3Forms (emails the inquiry to RECIPIENT without opening a mail client)
+      var WEB3FORMS_KEY = "YOUR_WEB3FORMS_KEY";
+      var btn = form.querySelector('button[type="submit"], .btn');
+      if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: subject,
+          from_name: "Bello Entertainment Website",
+          name: name,
+          email: get("email"),
+          message: lines.join("\n"),
+          botcheck: get("botcheck"),
+        }),
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (res) {
+          if (!res.success) throw new Error(res.message || "send failed");
+          if (ok) {
+            ok.textContent = "Thank you — your inquiry has been sent. We'll be in touch within 24 hours.";
+            ok.classList.add("show");
+            ok.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+          form.reset();
+        })
+        .catch(function () {
+          // Fallback: open the visitor's email client the old way
+          window.location.href =
+            "mailto:" + RECIPIENT +
+            "?subject=" + encodeURIComponent(subject) +
+            "&body=" + encodeURIComponent(lines.join("\n"));
+        })
+        .finally(function () {
+          if (btn) { btn.disabled = false; btn.textContent = "Send Inquiry"; }
+        });
     });
   }
 
