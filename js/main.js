@@ -49,7 +49,7 @@
   var form = document.getElementById("inquiryForm");
   if (form) {
     var ok = document.getElementById("formOk");
-    var RECIPIENT = "book@belloentertainment.com";
+    var RECIPIENT = "inquire@belloentertainmentnj.com";
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
