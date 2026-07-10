@@ -85,7 +85,7 @@
       var subject = "Event Inquiry — " + (get("eventType") || "New") + " — " + name;
 
       // Send via Web3Forms (emails the inquiry to RECIPIENT without opening a mail client)
-      var WEB3FORMS_KEY = "YOUR_WEB3FORMS_KEY";
+      var WEB3FORMS_KEY = "48664774-87d0-414a-bdfe-daa826f16479";
       var btn = form.querySelector('button[type="submit"], .btn');
       if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
 
