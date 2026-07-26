@@ -137,7 +137,7 @@ img { display: block; max-width: 100%; }
 }
 
 /* ---------- Logo (transparent RGBA, luminance-feathered edges) ---------- */
-.logo { display: block; width: auto; }
+.logo { display: block; width: auto; height: auto; }
 .brand-logo { height: 58px; }
 .hero__logo { width: clamp(200px, 26vw, 300px); margin: 0 0 1.4rem -0.5rem; }
 .footer-logo { width: 168px; margin-bottom: 0.4rem; }
@@ -626,4 +626,81 @@ section { position: relative; }
   }
   .nav-links.open { transform: none; }
   .nav-toggle { display: block; z-index: 101; }
+}
+
+/* ---- Services nav dropdown ---- */
+.nav-dd { position: relative; }
+.nav-dd > a::after { display: none; }
+.nav-dd__menu {
+  position: absolute;
+  top: calc(100% + 0.9rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 210px;
+  padding: 0.8rem 0;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease), visibility 0.35s;
+}
+.nav-dd__menu::before {
+  content: '';
+  position: absolute;
+  top: -1rem;
+  left: 0;
+  right: 0;
+  height: 1rem;
+}
+.nav-dd.open .nav-dd__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dd__menu a { display: block; padding: 0.55rem 1.5rem; white-space: nowrap; }
+.nav-dd__menu a::after { display: none; }
+@media (max-width: 860px) {
+  .nav-dd { position: static; }
+  .nav-dd__menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    background: transparent;
+    border: 0;
+    min-width: 0;
+    padding: 0.9rem 0 0 1.1rem;
+    display: grid;
+    gap: 1rem;
+  }
+  .nav-dd__menu::before { display: none; }
+  .nav-dd__menu a { padding: 0; }
+}
+
+/* ---- Sticky bottom event ribbon ---- */
+.bottombar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  padding: 0.7rem 1rem;
+  background: rgba(10, 10, 12, 0.85);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid var(--line);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.bottombar a { color: var(--ink-soft); transition: color 0.3s var(--ease); }
+.bottombar a:hover { color: var(--ink); }
+.bottombar b { color: var(--ink-dim); font-weight: 400; }
+body { padding-bottom: 2.8rem; }
+.hero__scroll { bottom: 4.4rem; }
+@media (max-width: 640px) {
+  .bottombar { gap: 0.55rem; font-size: 0.56rem; letter-spacing: 0.1em; padding: 0.6rem 0.5rem; }
 }

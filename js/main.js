@@ -139,3 +139,22 @@
     });
   });
 })();
+
+/* Events dropdown — opens on click */
+(function () {
+  "use strict";
+  document.querySelectorAll(".nav-dd").forEach(function (dd) {
+    var top = dd.querySelector(":scope > a");
+    if (!top) return;
+    top.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation(); // keep the mobile menu open while toggling
+      dd.classList.toggle("open");
+    });
+  });
+  document.addEventListener("click", function (e) {
+    document.querySelectorAll(".nav-dd.open").forEach(function (dd) {
+      if (!dd.contains(e.target)) dd.classList.remove("open");
+    });
+  });
+})();
