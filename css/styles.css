@@ -506,7 +506,7 @@ section { position: relative; }
 
 /* ---------- Footer ---------- */
 .footer { background: var(--bg-2); border-top: 1px solid var(--line); padding-block: 4rem 2rem; }
-.footer__top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; }
+.footer__top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; }
 .footer p { color: var(--ink-dim); font-size: 0.92rem; margin-top: 1rem; max-width: 24rem; }
 .footer h4 { font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 1.2rem; }
 .footer ul { list-style: none; }
