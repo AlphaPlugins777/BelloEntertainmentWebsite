@@ -704,3 +704,7 @@ body { padding-bottom: 2.8rem; }
 @media (max-width: 640px) {
   .bottombar { gap: 0.55rem; font-size: 0.56rem; letter-spacing: 0.1em; padding: 0.6rem 0.5rem; }
 }
+
+/* In-content area links */
+p a.arealink { color: var(--ink); border-bottom: 1px solid var(--line); transition: color 0.3s var(--ease), border-color 0.3s var(--ease); }
+p a.arealink:hover { color: var(--gold-2); border-color: var(--gold); }
