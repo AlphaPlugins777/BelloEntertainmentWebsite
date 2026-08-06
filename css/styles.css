@@ -680,6 +680,7 @@ section { position: relative; }
 
 /* ---- Sticky bottom event ribbon ---- */
 .bottombar {
+  flex-wrap: wrap;
   position: fixed;
   left: 0; right: 0; bottom: 0;
   z-index: 90;
