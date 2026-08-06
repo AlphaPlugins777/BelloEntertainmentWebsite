@@ -27,6 +27,7 @@
   <meta name="twitter:image" content="https://belloentertainmentnj.com/images/og-image.png" />
   <link rel="canonical" href="https://belloentertainmentnj.com/corporate-event-dj.html" />
   <link rel="stylesheet" href="css/styles.css?v=4" />
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop" />
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -58,6 +59,8 @@
     "logo": "https://belloentertainmentnj.com/images/logo.png",
     "email": "inquire@belloentertainmentnj.com",
     "telephone": "+1-732-995-8719",
+    "address": { "@type": "PostalAddress", "addressRegion": "NJ", "addressCountry": "US" },
+    "founder": { "@type": "Person", "name": "Joe", "jobTitle": "Owner & DJ" },
     "sameAs": [
       "https://www.instagram.com/belloentertainmentnj",
       "https://www.tiktok.com/@belloentertainmen",
@@ -93,17 +96,22 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://belloentertainmentnj.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Corporate Event DJ", "item": "https://belloentertainmentnj.com/corporate-event-dj.html" } ] }
+  </script>
 </head>
 <body>
 
   <!-- NAV -->
   <nav class="nav" id="nav">
-    <a class="brand" href="index.html" aria-label="Bello Entertainment — home"><img class="logo brand-logo" src="images/logo.png" alt="Bello Entertainment" /></a>
+    <a class="brand" href="/" aria-label="Bello Entertainment — home"><img class="logo brand-logo" src="images/logo.png" width="600" height="600" alt="Bello Entertainment" /></a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html#experience">Experience</a></li>
-      <li><a href="index.html#moments">Moments</a></li>
-      <li><a href="index.html#enhancements">Enhancements</a></li>
+      <li><a href="/#experience">Experience</a></li>
+      <li><a href="/#moments">Moments</a></li>
+      <li><a href="/#enhancements">Enhancements</a></li>
       <li><a href="packages.html">Packages</a></li>
       <li class="nav-dd">
         <a href="#">Events</a>
@@ -114,8 +122,8 @@
           <li><a href="special-occasions-dj.html">Special Occasions</a></li>
         </ul>
       </li>
-      <li><a href="blog/index.html">From the Booth</a></li>
-      <li><a href="index.html#inquire" class="btn">Inquire</a></li>
+      <li><a href="/blog/">From the Booth</a></li>
+      <li><a href="/#inquire" class="btn">Inquire</a></li>
     </ul>
   </nav>
 
@@ -233,7 +241,7 @@
       <h2 class="display">Let's plan your event</h2>
       <p>Tell us the date, venue and headcount — we'll reply within one business day with availability and a proposal.</p>
       <div class="hero__cta" style="justify-content:center">
-        <a href="index.html#inquire" class="btn">Request a Proposal</a>
+        <a href="/#inquire" class="btn">Request a Proposal</a>
         <a href="packages.html" class="btn btn--ghost">View Packages</a>
       </div>
     </div>
@@ -244,7 +252,7 @@
     <div class="wrap">
       <div class="footer__top">
         <div>
-          <a class="brand" href="index.html" aria-label="Bello Entertainment"><img class="logo footer-logo" src="images/logo.png" alt="Bello Entertainment" loading="lazy" decoding="async" /></a>
+          <a class="brand" href="/" aria-label="Bello Entertainment"><img class="logo footer-logo" src="images/logo.png" width="600" height="600" alt="Bello Entertainment" loading="lazy" decoding="async" /></a>
           <p>Premier DJ &amp; event entertainment for weddings, sweet sixteens, corporate events and special occasions — serving Monmouth &amp; Middlesex Counties and all of New Jersey, plus Staten Island and Brooklyn, NY.</p>
         </div>
         <div>
@@ -255,8 +263,8 @@
             <li><a href="corporate-event-dj.html">Corporate Event DJ</a></li>
             <li><a href="special-occasions-dj.html">Special Occasions</a></li>
             <li><a href="packages.html">Packages</a></li>
-            <li><a href="index.html#faq">FAQ</a></li>
-            <li><a href="blog/index.html">From the Booth</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">From the Booth</a></li>
           </ul>
         </div>
         <div>
