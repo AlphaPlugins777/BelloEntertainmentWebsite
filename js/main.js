@@ -84,6 +84,35 @@
 
       var subject = "Event Inquiry — " + (get("eventType") || "New") + " — " + name;
 
+      // Also notify the Bello CRM (instant phone alerts). Fire-and-forget: the
+      // email below is the source of truth, so a CRM hiccup never blocks the visitor.
+      try {
+        var params = new URLSearchParams(window.location.search);
+        fetch("https://5if6myan97.execute-api.us-east-1.amazonaws.com/dev/webhooks/website", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            // Spam deterrent only — this repo is public; the email path is the safety net.
+            "x-bello-secret": "4d862941d0fce19e953fb21c1ae4dd0fdde2ce81dea345c8",
+          },
+          body: JSON.stringify({
+            name: name,
+            email: get("email"),
+            phone: get("phone"),
+            event_type: get("eventType"),
+            event_date: get("date"),
+            venue: get("venue"),
+            guest_count: get("guests"),
+            budget: get("package"),
+            message: get("message"),
+            page: window.location.pathname,
+            utm_campaign: params.get("utm_campaign") || "",
+            utm_content: params.get("utm_content") || "",
+            botcheck: get("botcheck"),
+          }),
+        }).catch(function () { /* email fallback covers it */ });
+      } catch (crmErr) { /* never let CRM wiring break the form */ }
+
       // Send via Web3Forms (emails the inquiry to RECIPIENT without opening a mail client)
       var WEB3FORMS_KEY = "48664774-87d0-414a-bdfe-daa826f16479";
       var btn = form.querySelector('button[type="submit"], .btn');
