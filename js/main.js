@@ -26,21 +26,24 @@
   // Scroll-reveal animations
   var reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry, i) {
-          if (entry.isIntersecting) {
-            var el = entry.target;
-            // subtle stagger for siblings
-            var delay = (el.dataset.delay ? +el.dataset.delay : (i % 4) * 90);
-            setTimeout(function () { el.classList.add("in"); }, delay);
-            io.unobserve(el);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
-    );
-    reveals.forEach(function (el) { io.observe(el); });
+    var onReveal = function (entries, obs) {
+      entries.forEach(function (entry, i) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          // subtle stagger for siblings
+          var delay = (el.dataset.delay ? +el.dataset.delay : (i % 4) * 90);
+          setTimeout(function () { el.classList.add("in"); }, delay);
+          obs.unobserve(el);
+        }
+      });
+    };
+    var io = new IntersectionObserver(onReveal, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    // Tall elements (long articles) can never reach a 12% visibility threshold
+    // in a normal viewport — reveal those as soon as any part is on screen.
+    var ioTall = new IntersectionObserver(onReveal, { threshold: 0, rootMargin: "0px 0px -8% 0px" });
+    reveals.forEach(function (el) {
+      (el.offsetHeight > window.innerHeight * 0.6 ? ioTall : io).observe(el);
+    });
   } else {
     reveals.forEach(function (el) { el.classList.add("in"); });
   }
