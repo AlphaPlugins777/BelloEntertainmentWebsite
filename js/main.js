@@ -54,6 +54,23 @@
     var ok = document.getElementById("formOk");
     var RECIPIENT = "inquire@belloentertainmentnj.com";
 
+    // Prefill from the URL, e.g. /inquire?package=signature&event=wedding
+    // (package buttons on packages.html and event pages link here)
+    try {
+      var qs = new URLSearchParams(window.location.search);
+      var pick = function (id, want) {
+        var sel = document.getElementById(id);
+        if (!sel || !want) return;
+        want = want.toLowerCase();
+        for (var i = 0; i < sel.options.length; i++) {
+          var t = sel.options[i].text.toLowerCase();
+          if (t === want || t.indexOf(want) !== -1 || t.replace(/^the /, "").indexOf(want) === 0) { sel.selectedIndex = i; return; }
+        }
+      };
+      pick("package", qs.get("package"));
+      pick("eventType", qs.get("event"));
+    } catch (prefillErr) { /* optional nicety */ }
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
