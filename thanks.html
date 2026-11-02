@@ -62,6 +62,11 @@
         <a href="#booking-link" class="btn" id="bookCall">Book Your Planning Call Now</a>
         <p style="color:var(--ink-dim);font-size:0.86rem;margin-top:0.8rem">Pick an evening or Thursday / Friday slot that works for you &mdash; or wait for our text and we&rsquo;ll find one together.</p>
       </div>
+      <!-- Guide hand-off for Meta instant-form visitors: thanks.html?src=meta&guide=wedding|party -->
+      <div id="guideBox" class="center reveal" style="margin-top:2.4rem" hidden>
+        <p style="color:var(--ink-dim);font-size:0.95rem;margin-bottom:0.8rem">Your pricing guide is ready:</p>
+        <a id="guideLink" class="btn" href="guides/Bello-Wedding-Pricing-Guide-2027.pdf" target="_blank" rel="noopener">Open the Wedding Pricing Guide (PDF)</a>
+      </div>
       <!-- TODO (Joe): 20-second vertical video goes here when filmed.
       <div class="center reveal" style="margin-top:2.4rem"><video controls playsinline poster="images/joe-thanks-poster.jpg" style="max-width:320px;border-radius:14px"><source src="images/joe-thanks.mp4" type="video/mp4"></video></div>
       -->
@@ -78,6 +83,15 @@
         var n = q.get("n"), e = q.get("e"), d = q.get("d");
         var h = document.querySelector(".pagehero h1");
         if (h && n) h.textContent = "Got it, " + n + "!";
+        var g = (q.get("guide") || "").toLowerCase();
+        if (g === "wedding" || g === "party") {
+          var box = document.getElementById("guideBox"), link = document.getElementById("guideLink");
+          if (box && link) {
+            link.href = g === "party" ? "guides/Bello-Party-Pricing-Guide-2027.pdf" : "guides/Bello-Wedding-Pricing-Guide-2027.pdf";
+            link.textContent = g === "party" ? "Open the Party Pricing Guide (PDF)" : "Open the Wedding Pricing Guide (PDF)";
+            box.hidden = false;
+          }
+        }
         var p = document.querySelector(".pagehero p");
         if (p && (e || d)) {
           var when = d ? new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
