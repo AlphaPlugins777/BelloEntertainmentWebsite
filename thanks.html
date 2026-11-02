@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Got it — here’s what happens next | Bello Entertainment</title>
+  <meta name="description" content="Your inquiry is in. Our team texts you today, you book a 20-minute planning call, and your exact quote arrives the same night." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <link rel="canonical" href="https://belloentertainmentnj.com/thanks.html" />
+  <link rel="stylesheet" href="css/styles.css?v=6" />
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a class="brand" href="/" aria-label="Bello Entertainment — home"><img class="logo brand-logo" src="images/logo.png" width="600" height="600" alt="Bello Entertainment" /></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="wedding-dj.html">Weddings</a></li>
+      <li class="nav-dd">
+        <a href="sweet-16-dj.html">Parties &amp; Sweet 16s</a>
+        <ul class="nav-dd__menu">
+          <li><a href="sweet-16-dj.html">Sweet Sixteens</a></li>
+          <li><a href="special-occasions-dj.html">Special Occasions</a></li>
+          <li><a href="corporate-event-dj.html">Corporate</a></li>
+          <li><a href="holiday-party-dj-nj.html">Holiday Parties</a></li>
+          <li><a href="wedding-after-party-dj-nj.html">After-Parties</a></li>
+        </ul>
+      </li>
+      <li><a href="packages.html">Pricing</a></li>
+      <li><a href="/#reviews">Reviews</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="inquire.html" class="btn">Check My Date</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="pagehero">
+    <div class="pagehero__bg"></div>
+    <div class="wrap pagehero__inner">
+      <p class="eyebrow reveal" style="justify-content:center">Inquiry received</p>
+      <h1 class="reveal">Got it!</h1>
+      <p class="reveal">Your inquiry is in. Here’s exactly what happens next.</p>
+    </div>
+  </header>
+  <!-- NEXT STEPS -->
+  <section class="section" style="padding-top:2.5rem">
+    <div class="wrap nextsteps">
+      <div class="steps">
+        <div class="step reveal"><div class="step__n">01</div><h3>Our team texts you today</h3><p>To check your date and ask one or two quick questions. Same day, usually within the hour (8 am &ndash; 9 pm).</p></div>
+        <div class="step reveal"><div class="step__n">02</div><h3>20-minute planning call</h3><p>Timeline, music, what you don&rsquo;t want played. We recommend one package and tell you the number on the call.</p></div>
+        <div class="step reveal"><div class="step__n">03</div><h3>Exact quote that night</h3><p>Two options at most, retainer and balance date printed, your date held for seven days.</p></div>
+      </div>
+      <div class="center reveal" style="margin-top:3rem">
+        <a href="#booking-link" class="btn" id="bookCall">Book Your Planning Call Now</a>
+        <p style="color:var(--ink-dim);font-size:0.86rem;margin-top:0.8rem">Pick an evening or Thursday / Friday slot that works for you &mdash; or wait for our text and we&rsquo;ll find one together.</p>
+      </div>
+      <!-- TODO (Joe): 20-second vertical video goes here when filmed.
+      <div class="center reveal" style="margin-top:2.4rem"><video controls playsinline poster="images/joe-thanks-poster.jpg" style="max-width:320px;border-radius:14px"><source src="images/joe-thanks.mp4" type="video/mp4"></video></div>
+      -->
+      <div class="center reveal" style="margin-top:3rem;color:var(--ink-dim);font-size:0.9rem;max-width:40rem;margin-inline:auto">
+        <p>In the meantime: <a href="packages.html" style="color:var(--ink);text-decoration:underline">packages &amp; prices</a> &nbsp;&middot;&nbsp; <a href="https://maps.google.com/?cid=6392387054399819344" target="_blank" rel="noopener" style="color:var(--ink);text-decoration:underline">our Google reviews</a> &nbsp;&middot;&nbsp; <a href="tel:+17329958719" style="color:var(--ink);text-decoration:underline">(732) 995-8719</a></p>
+      </div>
+    </div>
+  </section>
+  <script>
+    // Personalize from the form hand-off: thanks.html?n=First&e=Wedding&d=2027-10-03
+    (function () {
+      try {
+        var q = new URLSearchParams(location.search);
+        var n = q.get("n"), e = q.get("e"), d = q.get("d");
+        var h = document.querySelector(".pagehero h1");
+        if (h && n) h.textContent = "Got it, " + n + "!";
+        var p = document.querySelector(".pagehero p");
+        if (p && (e || d)) {
+          var when = d ? new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
+          p.textContent = "Your " + (e ? e.toLowerCase() : "celebration") + (when ? " on " + when : "") + " inquiry is in. Here\u2019s exactly what happens next.";
+        }
+      } catch (err) {}
+    })();
+  </script>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <div>
+          <a class="brand" href="/" aria-label="Bello Entertainment"><img class="logo footer-logo" src="images/logo.png" width="600" height="600" alt="Bello Entertainment" loading="lazy" decoding="async" /></a>
+          <p>Premier DJ &amp; event entertainment for weddings, sweet sixteens, corporate events and special occasions — serving Monmouth &amp; Middlesex Counties and all of New Jersey, plus Staten Island and Brooklyn, NY.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="wedding-dj.html">Wedding DJ</a></li>
+            <li><a href="wedding-after-party-dj-nj.html">After-Party DJ</a></li>
+            <li><a href="sweet-16-dj.html">Sweet 16 DJ</a></li>
+            <li><a href="corporate-event-dj.html">Corporate Event DJ</a></li>
+            <li><a href="holiday-party-dj-nj.html">Holiday Party DJ</a></li>
+            <li><a href="special-occasions-dj.html">Special Occasions</a></li>
+            <li><a href="packages.html">Pricing</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Areas</h4>
+          <ul>
+            <li><a href="dj-monmouth-county-nj.html">Monmouth County</a></li>
+            <li><a href="dj-middlesex-county-nj.html">Middlesex County</a></li>
+            <li><a href="dj-howell-nj.html">Howell, NJ</a></li>
+            <li><a href="dj-staten-island.html">Staten Island</a></li>
+            <li><a href="dj-brooklyn.html">Brooklyn</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="mailto:inquire@belloentertainmentnj.com">inquire@belloentertainmentnj.com</a></li>
+            <li><a href="tel:+17329958719">(732) 995-8719</a></li>
+            <li><a href="https://www.instagram.com/belloentertainmentnj" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.facebook.com/Belloentertainmentnj/" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://www.tiktok.com/@belloentertainmen" target="_blank" rel="noopener">TikTok</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 Bello Entertainment. All rights reserved. · <a href="privacy.html">Privacy Policy</a></span>
+        <span><a href="wedding-dj.html">Weddings</a> · <a href="sweet-16-dj.html">Sweet Sixteens</a> · <a href="corporate-event-dj.html">Corporate</a> · <a href="special-occasions-dj.html">Special Occasions</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=7"></script>
+</body>
+</html>

@@ -98,6 +98,7 @@
         "Guests:        " + (get("guests") || "—"),
         "Package:       " + (get("package") || "Not sure yet"),
         "Heard via:     " + (get("referral") || "—"),
+        "SMS consent:   " + (form.querySelector("#smsConsent") && form.querySelector("#smsConsent").checked ? "YES" : "no"),
         "",
         "Details:",
         get("message") || "—",
@@ -126,6 +127,7 @@
             guest_count: get("guests"),
             budget: get("package"),
             referral_source: get("referral"),
+            sms_consent: !!(form.querySelector("#smsConsent") && form.querySelector("#smsConsent").checked),
             message: get("message"),
             page: window.location.pathname,
             utm_campaign: params.get("utm_campaign") || "",
@@ -156,8 +158,14 @@
         .then(function (r) { return r.json(); })
         .then(function (res) {
           if (!res.success) throw new Error(res.message || "send failed");
+          // Hand off to the thank-you page (what happens next + book-a-call button).
+          try {
+            var first = (name || "").split(" ")[0];
+            window.location.href = "thanks.html?n=" + encodeURIComponent(first) + "&e=" + encodeURIComponent(get("eventType") || "") + "&d=" + encodeURIComponent(get("date") || "");
+            return;
+          } catch (navErr) { /* fall through to inline message */ }
           if (ok) {
-            ok.textContent = "Thank you — your inquiry has been sent. We'll be in touch within 24 hours.";
+            ok.textContent = "Thank you — your inquiry is in. Our team will text you shortly.";
             ok.classList.add("show");
             ok.scrollIntoView({ behavior: "smooth", block: "center" });
           }
@@ -171,7 +179,7 @@
             "&body=" + encodeURIComponent(lines.join("\n"));
         })
         .finally(function () {
-          if (btn) { btn.disabled = false; btn.textContent = "Send Inquiry"; }
+          if (btn) { btn.disabled = false; btn.textContent = "Check My Date"; }
         });
     });
   }
